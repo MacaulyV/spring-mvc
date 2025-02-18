@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Arrays; // Importação necessária
+import java.util.List;   // Importação necessária
+
 @Controller
 public class HelloController {
     @GetMapping("/ola")
@@ -24,13 +27,20 @@ public class HelloController {
 
     @GetMapping("/livro")
     public ModelAndView livro() {
-        Livro livro = new Livro();
-        livro.setAutor("Homero");
-        livro.setTitulo("Odisseia");
-        livro.setCategoria(Categoria.ROMANCE);
+        Livro livro = new Livro(); // Adicionado para evitar erro
+        livro.setAutor("Autor Desconhecido");
+        livro.setTitulo("Título Desconhecido");
+        livro.setCategoria(Categoria.FANTASIA); // Corrigido
+
+        Livro livro2 = new Livro();
+        livro2.setAutor("Homero");
+        livro2.setTitulo("Ilíada");
+        livro2.setCategoria(Categoria.FANTASIA); // Corrigido
+
+        List<Livro> livros = Arrays.asList(livro, livro2);
         ModelAndView mv = new ModelAndView("livro");
         mv.addObject("livro", livro);
+        mv.addObject("livros", livros);
         return mv;
     }
-
 }
