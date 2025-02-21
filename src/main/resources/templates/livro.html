@@ -12,15 +12,11 @@
         <p>Categoria: <span th:text="*{categoria.descricao}"></span></p>
     </div>
     <p>
-        Lista de livros utilizando variable expression:
         <li th:each="livro : ${livros}" th:text="${livro.autor + '-' + livro.titulo}"></li>
     </p>
     <p>
-        Lista de livros utilizando selection expression:
         <li th:each="livro : ${livros}" th:object="${livro}" th:text="*{autor + '-' + titulo}"></li>
     </p>
-    <p><a th:href="@{/ola}"></a></p>
-    <span th:text="${2>1 ? 'maior' : 'menor'}"></span>
     <form th:action="@{/ola}">
         <input type="button" th:value="#{form.submit}">
     </form>

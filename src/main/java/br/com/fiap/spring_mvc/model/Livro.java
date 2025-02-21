@@ -3,8 +3,6 @@ package br.com.fiap.spring_mvc.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "tb_livro")
 @Data
@@ -19,8 +17,4 @@ public class Livro {
     @Column(name = "categoria")
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
-    @Column(name = "preco")
-    private BigDecimal preco;
-    @Column(name = "isbn")
-    private String isbn;
 }
