@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+    <div>
+        <h2>Lista de Livros Cadastrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Categoria</th>
+                    <th>Preco</th>
+                    <th>ISBN</th>
+                    <th>Acoes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="livro : ${listaLivro}">
+                    <td th:text="${livro.id}">ID</td>
+                    <td th:text="${livro.titulo}">Titulo</td>
+                    <td th:text="${livro.autor}">Autor</td>
+                    <td th:text="${livro.categoria}">Categoria</td>
+                    <td th:text="${livro.preco}">Preco</td>
+                    <td th:text="${livro.isbn}">ISBN</td>
+                    <td>
+                        <a th:href="@{/livro/edicao/{id}(id = ${livro.id})}">Editar</a>
+                        <span> | </span>
+                        <a th:href="@{/livro/deletar/{id}(id = ${livro.id})}">Deletar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
